@@ -1,16 +1,15 @@
 const Application = require('./../../application');
 
+const routes = {
+  'GET /:comment': 'comment'
+};
+const paramHandler = {
+  'comment': (val) => Promise.resolve(['hello', 'world'][parseInt(val, 0)])
+};
+
 module.exports = class CommentApplication extends Application {
-  constructor(router) {
-    super('/v1/comments', router);
-
-    this.routes = {
-      'GET /:comment': 'comment'
-    };
-
-    this.paramHandler = {
-      'comment': (val) => Promise.resolve(['hello', 'world'][parseInt(val, 0)])
-    };
+  constructor() {
+    super('/v1/comments', routes, paramHandler);
   }
 
   comment(ctx) {

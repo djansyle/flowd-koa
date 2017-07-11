@@ -4,10 +4,11 @@ const assert = require('assert');
 const verbose = require('debug')('flowd:application:verbose');
 
 module.exports = class Application {
-  constructor(base) {
+  constructor(base, routes, paramHandler = null) {
+    assert(_.isPlainObject(routes), `Expecting route to be an object instead got ${typeof routes}.`);
     this.base = base;
-    this.routes = null;
-    this.paramHandler = null;
+    this.routes = routes;
+    this.paramHandler = paramHandler;
   }
 
   attachRoutes(router) {

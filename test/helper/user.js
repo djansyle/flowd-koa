@@ -1,21 +1,21 @@
 const Application = require('./../../application');
 
+const routes = {
+  'GET /': 'users',
+  'GET /:user': 'user'
+};
+
+const paramHandler = {
+  'user': (val) => Promise.resolve({
+    1: 'djansyle',
+    2: 'dj',
+    3: 'djans'
+  }[parseInt(val, 0)])
+};
+
 class UserApplication extends Application {
   constructor() {
-    super('/v1/users');
-
-    this.routes = {
-      'GET /': 'users',
-      'GET /:user': 'user'
-    };
-    
-    this.paramHandler = {
-      'user': (val) => Promise.resolve({
-        1: 'djansyle',
-        2: 'dj',
-        3: 'djans'
-      }[parseInt(val, 0)])
-    };
+    super('/v1/users', routes, paramHandler);
   }
 
   users(ctx) {
