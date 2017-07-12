@@ -1,6 +1,6 @@
 {
   "name": "flowd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "REST API Framework",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^2.6.8",
+    "koa": "^2.3.0",
     "koa-compose": "^4.0.0",
     "koa-router": "^7.2.1",
     "url-join": "^2.0.2"
