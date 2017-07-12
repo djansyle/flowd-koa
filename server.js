@@ -7,10 +7,10 @@ const verbose = debug('flowd:server:verbose');
 const info = debug('flowd:server:info');
 
 module.exports = class Server {
-  constructor(host = '127.0.0.1', port = 8080) {
+  constructor(middlewares = [], applications = [], host = '127.0.0.1', port = 8080) {
     this.app = new Koa();
-    this.middlewares = [];
-    this.applications = [];
+    this.middlewares = middlewares;
+    this.applications = applications;
     this.host = host;
     this.port = port;
     this.server = null;

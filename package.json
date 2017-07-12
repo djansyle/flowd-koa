@@ -1,6 +1,6 @@
 {
   "name": "flowd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "REST API Framework",
   "main": "index.js",
   "scripts": {
