@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const urljoin = require('url-join');
 const assert = require('assert');
 const verbose = require('debug')('flowd:application:verbose');
@@ -12,7 +11,7 @@ module.exports = class Application {
   }
 
   attachRoutes(router) {
-    _.forEach(this.routes, (method, endpoint) => {
+    this.routes.forEach((method, endpoint) => {
       assert(this[method], `Method ${method} does not exists in ${this.constructor.name}`);
 
       const [verb, path] = endpoint.split(' ');
@@ -25,7 +24,7 @@ module.exports = class Application {
   }
 
   attachParamHandlers(router) {
-    _.forEach(this.paramHandler, (method, param) => {
+    this.paramHandler.forEach((method, param) => {
       verbose(`Attaching parameter handler '${param}'.`);
       router.param(param, (val, ctx, next) => {
         method(val).then((result) => {
