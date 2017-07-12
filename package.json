@@ -1,12 +1,12 @@
 {
-  "name": "flowd",
-  "version": "1.0.3",
-  "description": "REST API Framework",
+  "name": "flowd-koa",
+  "version": "1.0.0",
+  "description": "FlowD Koa Server and Application",
   "main": "index.js",
   "scripts": {
     "test": "ava"
   },
-  "repository": "git@github.com:djansyle/flowd.git",
+  "repository": "git@github.com:djansyle/flowd-koa.git",
   "author": "djansyle",
   "license": "MIT",
   "dependencies": {
