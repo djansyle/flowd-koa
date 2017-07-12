@@ -1,10 +1,11 @@
 const urljoin = require('url-join');
+const isPlainObject = require('lodash.isplainobject');
 const assert = require('assert');
 const verbose = require('debug')('flowd:application:verbose');
 
 module.exports = class Application {
   constructor(base, routes, paramHandler = null) {
-    assert(_.isPlainObject(routes), `Expecting route to be an object instead got ${typeof routes}.`);
+    assert(isPlainObject(routes), `Expecting route to be an object instead got ${typeof routes}.`);
     this.base = base;
     this.routes = routes;
     this.paramHandler = paramHandler;
