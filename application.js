@@ -1,4 +1,5 @@
 const urljoin = require('url-join');
+const forEach = require('lodash.foreach');
 const isPlainObject = require('lodash.isplainobject');
 const assert = require('assert');
 const verbose = require('debug')('flowd:application:verbose');
@@ -25,7 +26,11 @@ module.exports = class Application {
   }
 
   attachParamHandlers(router) {
-    this.paramHandler.forEach((method, param) => {
+    if (!this.paramHandler) {
+      return ;
+    }
+
+    forEach(this.paramHandler, (method, param) => {
       verbose(`Attaching parameter handler '${param}'.`);
       router.param(param, (val, ctx, next) => {
         method(val).then((result) => {
