@@ -13,7 +13,7 @@ module.exports = class Application {
   }
 
   attachRoutes(router) {
-    this.routes.forEach((method, endpoint) => {
+    forEach(this.routes, (method, endpoint) => {
       assert(this[method], `Method ${method} does not exists in ${this.constructor.name}`);
 
       const [verb, path] = endpoint.split(' ');
