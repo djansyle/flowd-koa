@@ -1,6 +1,6 @@
 {
   "name": "flowd-koa",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "FlowD Koa Server and Application",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "koa-router": "^7.2.1",
     "lodash.foreach": "^4.5.0",
     "lodash.isplainobject": "^4.0.6",
+    "resthen": "^1.0.0",
     "url-join": "^2.0.2"
   },
   "devDependencies": {

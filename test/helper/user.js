@@ -6,11 +6,14 @@ const routes = {
 };
 
 const paramHandler = {
-  'user': (val) => Promise.resolve({
-    1: 'djansyle',
-    2: 'dj',
-    3: 'djans'
-  }[parseInt(val, 0)])
+  'user': (val) => new Promise(resolve => {
+    resolve({
+      1: 'djansyle',
+      2: 'dj',
+      3: 'djans'
+    }[parseInt(val, 0)]);
+  }),
+
 };
 
 class UserApplication extends Application {

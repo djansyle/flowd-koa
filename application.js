@@ -3,6 +3,7 @@ const forEach = require('lodash.foreach');
 const isPlainObject = require('lodash.isplainobject');
 const assert = require('assert');
 const verbose = require('debug')('flowd:application:verbose');
+const resthen = require('resthen');
 
 module.exports = class Application {
   constructor(base, routes, paramHandler = null) {
@@ -33,14 +34,15 @@ module.exports = class Application {
     forEach(this.paramHandler, (method, param) => {
       verbose(`Attaching parameter handler '${param}'.`);
       router.param(param, (val, ctx, next) => {
-        method(val).then((result) => {
-          ctx[param] = result;
-          next();
-        })
-          .catch(err => {
+        return resthen(method(val), (err, res) => {
+          if (err) {
             throw err;
-          })
-      })
+          }
+
+          ctx[param] = res;
+          next();
+        });
+      });
     });
     return router;
   }
