@@ -18,7 +18,7 @@ module.exports = class Application {
       assert(this[method], `Method ${method} does not exists in ${this.constructor.name}`);
 
       const [verb, path] = endpoint.split(' ');
-      assert(typeof assert === 'string', 'Expecting endpoint to contain URL verb and endpoint.');
+      assert(typeof path === 'string', 'Expecting endpoint to contain URL verb and endpoint.');
 
       const resolved = ['','/'].indexOf(path) >= 0 ? this.base : urljoin(this.base, path);
 

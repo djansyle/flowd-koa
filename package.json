@@ -1,6 +1,6 @@
 {
   "name": "flowd-koa",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "FlowD Koa Server and Application",
   "main": "index.js",
   "scripts": {
