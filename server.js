@@ -27,8 +27,11 @@ module.exports = class Server {
   }
 
   start() {
-    const app = this.app;
+    const server = this.app;
     const router = new Router;
+
+    verbose('Attaching middlewares.');
+    server.use(compose(this.middlewares));
 
     verbose('Instantiating applications.');
     this.applications.forEach(classApp => {
@@ -37,14 +40,11 @@ module.exports = class Server {
       app.attachRoutes(router);
     });
 
-    verbose('Attaching middlewares.');
-    app.use(compose(this.middlewares));
-
     verbose('Attaching application routes.');
-    app.use(router.routes());
-    app.use(router.allowedMethods());
+    server.use(router.routes());
+    server.use(router.allowedMethods());
 
-    this.server = app.listen(this.port, this.host);
+    this.server = server.listen(this.port, this.host);
     info(`Server started on ${this.host} at port ${this.port}`);
   }
 
